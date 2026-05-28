@@ -1,4 +1,4 @@
-import Twin from '@/twin';
+import Twin from '@/components/twin';
 
 export default function Home() {
   return (
