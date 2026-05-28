@@ -1,0 +1,31 @@
+{
+    "full_name": "Madeline Li",
+    "name": "Maddie",
+    "current_role": "Business operator",
+    "location": "Berlin",
+    "email": "madeline.shuhui@gmail.com",
+    "linkedin": "linkedin.com/in/madeline-shuhui-li/",
+    "specialties": [
+      "Finance",
+      "CorporateLaw",
+      "Blockchain"
+    ],
+    "years_experience": 20,
+    "education": [
+      {
+        "degree": "Ph.D. in Law",
+        "institution": "Free University of Berlin",
+        "year": "2015"
+      },
+      {
+        "degree": "LLM in Law",
+        "institution": "Goethe University of Frankfurt",
+        "year": "2012"
+      },
+      {
+        "degree": "Bachelor of Science",
+        "institution": "National University of Singapore",
+        "year": "2010"
+      }
+    ]
+  }
