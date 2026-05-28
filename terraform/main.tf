@@ -208,12 +208,12 @@ resource "aws_lambda_permission" "api_gw" {
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "main" {
   aliases = local.aliases
-  
+
   viewer_certificate {
     acm_certificate_arn            = var.use_custom_domain ? aws_acm_certificate.site[0].arn : null
     cloudfront_default_certificate = var.use_custom_domain ? false : true
     ssl_support_method             = var.use_custom_domain ? "sni-only" : null
-    minimum_protocol_version       = "TLSv1.2_2021"
+    minimum_protocol_version       = var.use_custom_domain ? "TLSv1.2_2021" : null
   }
 
   origin {
