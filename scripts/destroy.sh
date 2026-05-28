@@ -20,7 +20,7 @@ cd "$(dirname "$0")/../terraform"
 
 # Get AWS Account ID and Region for backend configuration
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-AWS_REGION=${DEFAULT_AWS_REGION:-us-east-1}
+AWS_REGION=${DEFAULT_AWS_REGION:-eu-central-1}
 
 # Initialize terraform with S3 backend
 echo "🔧 Initializing Terraform with S3 backend..."
@@ -31,16 +31,7 @@ terraform init -input=false \
   -backend-config="dynamodb_table=twin-terraform-locks" \
   -backend-config="encrypt=true"
 
-# Check if workspace exists
-if ! terraform workspace list | grep -q "$ENVIRONMENT"; then
-    echo "❌ Error: Workspace '$ENVIRONMENT' does not exist"
-    echo "Available workspaces:"
-    terraform workspace list
-    exit 1
-fi
-
-# Select the workspace
-terraform workspace select "$ENVIRONMENT"
+terraform workspace select default
 
 echo "📦 Emptying S3 buckets..."
 
@@ -80,7 +71,3 @@ else
 fi
 
 echo "✅ Infrastructure for ${ENVIRONMENT} has been destroyed!"
-echo ""
-echo "💡 To remove the workspace completely, run:"
-echo "   terraform workspace select default"
-echo "   terraform workspace delete $ENVIRONMENT"
